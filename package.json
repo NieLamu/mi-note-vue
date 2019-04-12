@@ -1,6 +1,6 @@
 {
   "name": "ionic-vue-todos",
-  "displayName": "HelloCordova",
+  "displayName": "TODOs",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
@@ -11,7 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "c:s": "cordova serve",
     "c:r:a": "yarn build && cordova run android --device",
-    "c:rq": "cordova requirements"
+    "c:rq": "cordova requirements",
+    "clean": "rm -rf node_modules/ plugins/ platforms/ package-lock.json yarn.lock"
   },
   "dependencies": {
     "cordova-android": "^8.0.0",
