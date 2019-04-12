@@ -9,11 +9,13 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cordova serve",
-    "run:a": "cordova run android --device"
+    "c:s": "cordova serve",
+    "c:r:a": "cordova run android --device",
+    "c:rq": "cordova requirements"
   },
   "dependencies": {
     "cordova-android": "^8.0.0",
+    "cordova-ios": "^5.0.0",
     "core-js": "^2.6.5",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
@@ -40,7 +42,8 @@
       "cordova-plugin-whitelist": {}
     },
     "platforms": [
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
