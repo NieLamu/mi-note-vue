@@ -10,12 +10,14 @@
     "lint": "vue-cli-service lint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "c:s": "cordova serve",
-    "c:r:a": "cordova run android --device",
+    "c:r:a": "yarn build && cordova run android --device",
     "c:rq": "cordova requirements"
   },
   "dependencies": {
     "cordova-android": "^8.0.0",
     "cordova-ios": "^5.0.0",
+    "cordova-plugin-camera": "^4.0.3",
+    "cordova-plugin-whitelist": "^1.3.3",
     "core-js": "^2.6.5",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
@@ -29,8 +31,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.5.21",
-    "cordova-plugin-whitelist": "^1.3.3"
+    "vue-template-compiler": "^2.5.21"
   },
   "keywords": [
     "ecosystem:cordova"
@@ -39,7 +40,8 @@
   "license": "Apache-2.0",
   "cordova": {
     "plugins": {
-      "cordova-plugin-whitelist": {}
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "android",

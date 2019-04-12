@@ -1577,12 +1577,24 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "http://registry.npm.taobao.org/boolbase/download/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bplist-parser@^0.1.0:
+bplist-creator@0.0.7:
+  version "0.0.7"
+  resolved "http://registry.npm.taobao.org/bplist-creator/download/bplist-creator-0.0.7.tgz#37df1536092824b87c42f957b01344117372ae45"
+  integrity sha1-N98VNgkoJLh8QvlXsBNEEXNyrkU=
+  dependencies:
+    stream-buffers "~2.2.0"
+
+bplist-parser@0.1.1, bplist-parser@^0.1.0:
   version "0.1.1"
   resolved "http://registry.npm.taobao.org/bplist-parser/download/bplist-parser-0.1.1.tgz#d60d5dcc20cba6dc7e1f299b35d3e1f95dafbae6"
   integrity sha1-1g1dzCDLptx+HymbNdPh+V2vuuY=
   dependencies:
     big-integer "^1.6.7"
+
+bplist-parser@^0.0.6:
+  version "0.0.6"
+  resolved "http://registry.npm.taobao.org/bplist-parser/download/bplist-parser-0.0.6.tgz#38da3471817df9d44ab3892e27707bbbd75a11b9"
+  integrity sha1-ONo0cYF9+dRKs4kuJ3B7u9daEbk=
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -2249,6 +2261,26 @@ cordova-common@^3.1.0:
     strip-bom "^3.0.0"
     underscore "^1.8.3"
     which "^1.3.0"
+
+cordova-ios@^5.0.0:
+  version "5.0.0"
+  resolved "http://registry.npm.taobao.org/cordova-ios/download/cordova-ios-5.0.0.tgz#3a293c23f3eb6fc257b7fbbee1f356088a2b14bd"
+  integrity sha1-Oik8I/Prb8JXt/u+4fNWCIorFL0=
+  dependencies:
+    cordova-common "^3.1.0"
+    ios-sim "^7.0.0"
+    nopt "^4.0.1"
+    plist "^3.0.1"
+    q "^1.5.1"
+    shelljs "^0.5.3"
+    unorm "^1.4.1"
+    xcode "^2.0.0"
+    xml-escape "^1.1.0"
+
+cordova-plugin-camera@^4.0.3:
+  version "4.0.3"
+  resolved "http://registry.npm.taobao.org/cordova-plugin-camera/download/cordova-plugin-camera-4.0.3.tgz#7373a5938318c86ccfd84e3713e2382d10fe076b"
+  integrity sha1-c3Olk4MYyGzP2E43E+I4LRD+B2s=
 
 cordova-plugin-whitelist@^1.3.3:
   version "1.3.3"
@@ -4315,6 +4347,16 @@ invert-kv@^2.0.0:
   resolved "http://registry.npm.taobao.org/invert-kv/download/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
   integrity sha1-c5P1r6Weyf9fZ6J2INEcIm4+7AI=
 
+ios-sim@^7.0.0:
+  version "7.0.0"
+  resolved "http://registry.npm.taobao.org/ios-sim/download/ios-sim-7.0.0.tgz#c286a8ac8e13e978b5bb219f790133b2d36a4b06"
+  integrity sha1-woaorI4T6Xi1uyGfeQEzstNqSwY=
+  dependencies:
+    bplist-parser "^0.0.6"
+    nopt "1.0.9"
+    plist "^3.0.1"
+    simctl "^1.1.1"
+
 ip-regex@^2.1.0:
   version "2.1.0"
   resolved "http://registry.npm.taobao.org/ip-regex/download/ip-regex-2.1.0.tgz#fa78bf5d2e6913c911ce9f819ee5146bb6d844e9"
@@ -5357,6 +5399,13 @@ node-releases@^1.1.13:
   dependencies:
     semver "^5.3.0"
 
+nopt@1.0.9:
+  version "1.0.9"
+  resolved "http://registry.npm.taobao.org/nopt/download/nopt-1.0.9.tgz#3bc0d7cba7bfb0d5a676dbed7c0ebe48a4fd454e"
+  integrity sha1-O8DXy6e/sNWmdtvtfA6+SKT9RU4=
+  dependencies:
+    abbrev "1"
+
 nopt@^4.0.1:
   version "4.0.1"
   resolved "http://registry.npm.taobao.org/nopt/download/nopt-4.0.1.tgz#d0d4685afd5415193c8c7505602d0d17cd64474d"
@@ -6377,7 +6426,7 @@ punycode@^1.2.4, punycode@^1.4.1:
   resolved "http://registry.npm.taobao.org/punycode/download/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
   integrity sha1-wNWmOycYgArY4esPpSachN1BhF4=
 
-q@^1.1.2, q@^1.4.1:
+q@^1.1.2, q@^1.4.1, q@^1.5.1:
   version "1.5.1"
   resolved "http://registry.npm.taobao.org/q/download/q-1.5.1.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fq%2Fdownload%2Fq-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
@@ -6982,6 +7031,11 @@ shell-quote@^1.6.1:
     array-reduce "~0.0.0"
     jsonify "~0.0.0"
 
+shelljs@^0.2.6:
+  version "0.2.6"
+  resolved "http://registry.npm.taobao.org/shelljs/download/shelljs-0.2.6.tgz#90492d72ffcc8159976baba62fb0f6884f0c3378"
+  integrity sha1-kEktcv/MgVmXa6umL7D2iE8MM3g=
+
 shelljs@^0.5.3:
   version "0.5.3"
   resolved "http://registry.npm.taobao.org/shelljs/download/shelljs-0.5.3.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fshelljs%2Fdownload%2Fshelljs-0.5.3.tgz#c54982b996c76ef0c1e6b59fbdc5825f5b713113"
@@ -6991,6 +7045,23 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "http://registry.npm.taobao.org/signal-exit/download/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
+
+simctl@^1.1.1:
+  version "1.1.1"
+  resolved "http://registry.npm.taobao.org/simctl/download/simctl-1.1.1.tgz#e26cc3c04e662250b4457b5b4c48cc12484f3814"
+  integrity sha1-4mzDwE5mIlC0RXtbTEjMEkhPOBQ=
+  dependencies:
+    shelljs "^0.2.6"
+    tail "^0.4.0"
+
+simple-plist@^1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/simple-plist/download/simple-plist-1.0.0.tgz#bed3085633b22f371e111f45d159a1ccf94b81eb"
+  integrity sha1-vtMIVjOyLzceER9F0VmhzPlLges=
+  dependencies:
+    bplist-creator "0.0.7"
+    bplist-parser "0.1.1"
+    plist "^3.0.1"
 
 simple-swizzle@^0.2.2:
   version "0.2.2"
@@ -7245,6 +7316,11 @@ stream-browserify@^2.0.1:
     inherits "~2.0.1"
     readable-stream "^2.0.2"
 
+stream-buffers@~2.2.0:
+  version "2.2.0"
+  resolved "http://registry.npm.taobao.org/stream-buffers/download/stream-buffers-2.2.0.tgz#91d5f5130d1cef96dcfa7f726945188741d09ee4"
+  integrity sha1-kdX1Ew0c75bc+n9yaUUYh0HQnuQ=
+
 stream-each@^1.1.0:
   version "1.2.3"
   resolved "http://registry.npm.taobao.org/stream-each/download/stream-each-1.2.3.tgz#ebe27a0c389b04fbcc233642952e10731afa9bae"
@@ -7456,6 +7532,11 @@ table@^5.2.3:
     lodash "^4.17.11"
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
+
+tail@^0.4.0:
+  version "0.4.0"
+  resolved "http://registry.npm.taobao.org/tail/download/tail-0.4.0.tgz#d29de72750cc99db1e053aff13c359ecfb713002"
+  integrity sha1-0p3nJ1DMmdseBTr/E8NZ7PtxMAI=
 
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.1"
@@ -7757,6 +7838,11 @@ universalify@^0.1.0:
   version "0.1.2"
   resolved "http://registry.npm.taobao.org/universalify/download/universalify-0.1.2.tgz#b646f69be3942dabcecc9d6639c80dc105efaa66"
   integrity sha1-tkb2m+OULavOzJ1mOcgNwQXvqmY=
+
+unorm@^1.4.1:
+  version "1.5.0"
+  resolved "http://registry.npm.taobao.org/unorm/download/unorm-1.5.0.tgz#01fa9b76f1c60f7916834605c032aa8962c3f00a"
+  integrity sha1-AfqbdvHGD3kWg0YFwDKqiWLD8Ao=
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
@@ -8206,6 +8292,19 @@ ws@^6.0.0:
   integrity sha1-RC/fCkftZPWbal2P8TD0dI7VJPs=
   dependencies:
     async-limiter "~1.0.0"
+
+xcode@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/xcode/download/xcode-2.0.0.tgz#134f1f94c26fbfe8a9aaa9724bfb2772419da1a2"
+  integrity sha1-E08flMJvv+ipqqlyS/snckGdoaI=
+  dependencies:
+    simple-plist "^1.0.0"
+    uuid "^3.3.2"
+
+xml-escape@^1.1.0:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/xml-escape/download/xml-escape-1.1.0.tgz#3904c143fa8eb3a0030ec646d2902a2f1b706c44"
+  integrity sha1-OQTBQ/qOs6ADDsZG0pAqLxtwbEQ=
 
 xmlbuilder@^9.0.7:
   version "9.0.7"
