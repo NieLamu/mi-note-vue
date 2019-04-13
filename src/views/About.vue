@@ -38,7 +38,7 @@ export default {
     getPicture: function () {
       navigator.camera.getPicture(onSuccess, onFail, {
         quality: 50,
-        destinationType: Camera.DestinationType.FILE_URI
+        destinationType: window.Camera.DestinationType.FILE_URI
       })
 
       function onSuccess (imageURI) {

@@ -24,8 +24,8 @@
         </ion-item>
       </ion-list>
 
-      <ion-fab vertical="bottom" horizontal="end" slot="fixed" @click="addTodo">
-        <ion-fab-button>
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button @click="addTodo">
           <ion-icon name="add"></ion-icon>
         </ion-fab-button>
       </ion-fab>
@@ -49,7 +49,7 @@ export default {
   },
   created () {
     axios
-      .get('http://192.168.102:3001/todos')
+      .get('http://localhost:3001/todos')
       .then(res => {
         console.log('res', res)
         this.todos = res.data

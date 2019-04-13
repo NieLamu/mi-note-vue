@@ -31,7 +31,7 @@ export default {
   methods: {
     addTodo () {
       const newTodo = { name: this.name }
-      axios.post('http://192.168.1.102:3001/todos', newTodo).then(res => {
+      axios.post('http://localhost:3001/todos', newTodo).then(res => {
         this.$router.push({ path: '/todos' })
       })
     },
