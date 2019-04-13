@@ -12,9 +12,11 @@
     "c:s": "cordova serve",
     "c:r:a": "yarn build && cordova run android --device",
     "c:rq": "cordova requirements",
-    "clean": "rm -rf node_modules/ plugins/ platforms/ package-lock.json yarn.lock"
+    "clean": "rm -rf node_modules/ plugins/ platforms/ package-lock.json yarn.lock",
+    "json-serve": "json-server db.json --watch --port 3001"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "cordova-android": "^8.0.0",
     "cordova-ios": "^5.0.0",
     "cordova-plugin-camera": "^4.0.3",
@@ -32,6 +34,7 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "json-server": "^0.14.2",
     "vue-template-compiler": "^2.5.21"
   },
   "keywords": [

@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,
@@ -67,38 +67,16 @@
         <a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a>
       </li>
     </ul>
-    <div @click="getPicture">paizhao</div>
-    <img id="myImage" style="height:50%;width:50%;">
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
+  name: 'HelloWorld',
   props: {
     msg: String
-  },
-  mounted() {
-    console.log(navigator, window);
-  },
-  methods: {
-    getPicture: function() {
-      navigator.camera.getPicture(onSuccess, onFail, {
-        quality: 50,
-        destinationType: Camera.DestinationType.FILE_URI
-      });
-
-      function onSuccess(imageURI) {
-        var image = document.getElementById("myImage");
-        image.src = imageURI;
-      }
-
-      function onFail(message) {
-        alert("Failed because: " + message);
-      }
-    }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

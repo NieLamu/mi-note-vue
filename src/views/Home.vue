@@ -1,8 +1,12 @@
 <template>
-  <div class="home">
+  <ion-app>
     <img alt="Vue logo" src="../assets/logo.png">
+    <div>
+      <router-link to="/todos">Todos</router-link>|
+      <router-link to="/about">About</router-link>
+    </div>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  </ion-app>
 </template>
 
 <script>
