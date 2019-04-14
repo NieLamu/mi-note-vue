@@ -31,7 +31,6 @@ www/
 node_modules/
 tmp/
 temp/
-db.json
 package-lock.json
 platforms/
 plugins/
