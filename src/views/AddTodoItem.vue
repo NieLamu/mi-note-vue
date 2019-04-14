@@ -20,8 +20,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   data () {
     return {
@@ -31,7 +29,7 @@ export default {
   methods: {
     addTodo () {
       const newTodo = { name: this.name }
-      axios.post('http://localhost:3001/todos', newTodo).then(res => {
+      this.axios.post('http://localhost:3001/todos', newTodo).then(res => {
         this.$router.push({ path: '/todos' })
       })
     },

@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
   data () {
     return {
@@ -48,7 +46,7 @@ export default {
     }
   },
   created () {
-    axios
+    this.axios
       .get('http://localhost:3001/todos')
       .then(res => {
         console.log('res', res)
