@@ -1,4 +1,4 @@
-# ionic-vue-todos
+# mi-note-vue
 
 ## Project setup
 ```

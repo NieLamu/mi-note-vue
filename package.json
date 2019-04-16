@@ -1,5 +1,5 @@
 {
-  "name": "ionic-vue-todos",
+  "name": "mi-note-vue",
   "displayName": "TODOs",
   "version": "1.1.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
@@ -22,7 +22,10 @@
     "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-whitelist": "^1.3.3",
     "core-js": "^2.6.5",
+    "framework7": "^4.2.2",
+    "framework7-vue": "^4.2.2",
     "vue": "^2.6.6",
+    "vue-axios": "^2.1.4",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
