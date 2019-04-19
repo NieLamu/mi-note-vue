@@ -1,22 +1,12 @@
 <template>
-  <ion-app>
-    <img alt="Vue logo" src="../assets/logo.png">
-    <div>
-      <router-link to="/todos">Todos</router-link>|
-      <router-link to="/about">About</router-link>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </ion-app>
+  <f7-page name="home">
+    <f7-navbar title="Home"></f7-navbar>
+    <!-- Page content -->
+    <f7-link href="/about">About Page</f7-link>
+    <f7-link href="/login">Login Page</f7-link>
+  </f7-page>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
-  }
-}
+export default {}
 </script>
