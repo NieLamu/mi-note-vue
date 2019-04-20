@@ -2617,11 +2617,6 @@ core-js@^2.4.0, core-js@^2.5.0, core-js@^2.6.5:
   resolved "http://registry.npm.taobao.org/core-js/download/core-js-2.6.5.tgz#44bc8d249e7fb2ff5d00e0341a7ffb94fbf67895"
   integrity sha1-RLyNJJ5/sv9dAOA0Gn/7lPv2eJU=
 
-core-js@^3.0.1:
-  version "3.0.1"
-  resolved "http://registry.npm.taobao.org/core-js/download/core-js-3.0.1.tgz#1343182634298f7f38622f95e73f54e48ddf4738"
-  integrity sha1-E0MYJjQpj384Yi+V5z9U5I3fRzg=
-
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
   resolved "http://registry.npm.taobao.org/core-util-is/download/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -9038,11 +9033,6 @@ vue-loader@^15.7.0:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
-
-vue-router@^3.0.6:
-  version "3.0.6"
-  resolved "http://registry.npm.taobao.org/vue-router/download/vue-router-3.0.6.tgz?cache=0&other_urls=http%3A%2F%2Fregistry.npm.taobao.org%2Fvue-router%2Fdownload%2Fvue-router-3.0.6.tgz#2e4f0f9cbb0b96d0205ab2690cfe588935136ac3"
-  integrity sha1-Lk8PnLsLltAgWrJpDP5YiTUTasM=
 
 vue-style-loader@^4.1.0:
   version "4.1.2"
