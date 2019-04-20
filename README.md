@@ -27,3 +27,7 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Deps
+
+Version of `core-js` must be `2.6.5` because of `These dependencies were not found: core-js` error.
