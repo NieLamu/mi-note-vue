@@ -9,12 +9,6 @@
 </template>
 
 <script>
-import { f7Page, f7Navbar, f7Block } from 'framework7-vue'
 export default {
-  components: {
-    f7Page,
-    f7Navbar,
-    f7Block
-  }
 }
 </script>

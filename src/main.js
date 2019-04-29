@@ -12,7 +12,7 @@ import Framework7 from 'framework7/framework7.esm.bundle'
 // // Import Framework7-Vue with all components
 // import Framework7Vue from 'framework7-vue/framework7-vue.esm.bundle'
 // Import Framework7-Vue, import components you need in your components
-import Framework7Vue from 'framework7-vue'
+import Framework7Vue from 'framework7-vue/framework7-vue.esm.bundle'
 // Init plugin and register all components
 Framework7.use(Framework7Vue)
 
