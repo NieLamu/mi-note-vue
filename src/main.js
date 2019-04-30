@@ -4,6 +4,7 @@ import store from './store'
 import './registerServiceWorker'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import moment from 'moment'
 
 // Framework7 Library CSS Bundle
 import 'framework7/css/framework7.bundle.min.css'
@@ -18,6 +19,8 @@ Framework7.use(Framework7Vue)
 
 Vue.config.productionTip = true
 Vue.use(VueAxios, axios)
+Vue.prototype.$moment = moment
+moment.locale('zh-cn')
 
 // Init Vue App
 new Vue({
