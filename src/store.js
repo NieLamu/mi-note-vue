@@ -136,7 +136,8 @@ export default new Vuex.Store({
         lastEditTime: 1524719992000, // 编辑时间
         reminderTime: false, // 提醒时间
         deleteTime: 1524719992000, // 是否删除及删除时间
-        content: '未置顶已删除已分类未私密<br />的便签' // 内容
+        content:
+          '未置顶已删除已分类未私密红红火火恍恍惚惚很好很好韩寒韩红会画画<br />的便签' // 内容
       },
       {
         id: 10120,
@@ -148,7 +149,8 @@ export default new Vuex.Store({
         lastEditTime: 1556357638000, // 编辑时间
         reminderTime: false, // 提醒时间
         deleteTime: 1556357648000, // 是否删除及删除时间
-        content: '未置顶已删除已分类未私密<br />的便签' // 内容
+        content:
+          '未置顶已删除已分类未私密<br />的便签 <note-audio :src="xxx.mp3" :duration="60"><note-audio>' // 内容
       },
       {
         id: 10101,

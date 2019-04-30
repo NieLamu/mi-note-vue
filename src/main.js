@@ -20,7 +20,24 @@ Framework7.use(Framework7Vue)
 Vue.config.productionTip = true
 Vue.use(VueAxios, axios)
 Vue.prototype.$moment = moment
-moment.locale('zh-cn')
+moment.locale('zh-cn', {
+  monthsShort: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split(
+    '_'
+  ),
+  weekdays: '周日_周一_周二_周三_周四_周五_周六'.split('_'),
+  longDateFormat: {
+    LT: 'HH:mm',
+    lll: 'YYYY年M月D日 HH:mm'
+  },
+  calendar: {
+    sameDay: 'LT',
+    nextDay: '[明天] LT',
+    nextWeek: '[下]dddd LT',
+    lastDay: '[昨天] LT',
+    lastWeek: '[上]dddd LT',
+    sameElse: 'lll'
+  }
+})
 
 // Init Vue App
 new Vue({

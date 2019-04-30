@@ -1,251 +1,293 @@
 <template>
   <f7-page>
-    <f7-navbar large :sliding="false">
-      <f7-nav-left>
-        <f7-link panel-open="left" icon-ios="f7:menu" icon-aurora="f7:menu" icon-md="material:menu"></f7-link>
-      </f7-nav-left>
-      <f7-nav-title sliding>Framework7 Vue</f7-nav-title>
+    <f7-navbar>
+      <f7-nav-title>
+        <f7-link raised popover-open=".folder-menu">
+          {{ title }}&nbsp;
+          <f7-icon ios="ion:ios-arrow-dropdown" md="ion:md-arrow-dropdown"></f7-icon>
+        </f7-link>
+      </f7-nav-title>
       <f7-nav-right>
-        <f7-link class="searchbar-enable" data-searchbar=".searchbar-components" icon-ios="f7:search" icon-aurora="f7:search" icon-md="material:search"></f7-link>
+        <f7-link raised popover-open=".more-menu">
+          <f7-icon ios="ion:ios-more" md="ion:md-more"></f7-icon>
+        </f7-link>
       </f7-nav-right>
-      <f7-nav-title-large>Framework7 Vue</f7-nav-title-large>
-      <f7-searchbar
-        class="searchbar-components"
-        search-container=".components-list"
-        search-in="a"
-        expandable
-        :disable-button="!this.$theme.aurora"
-      ></f7-searchbar>
     </f7-navbar>
 
-    <f7-list class="searchbar-hide-on-search">
-      <f7-list-item title="About Framework7" link="/about/">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-    </f7-list>
+    <div v-if="showingFolder === 'trash'" class="trashInfo main-color">废纸篓内的便签逾期30天后会被自动删除哦！</div>
+    <f7-card v-for="thisCard in showingNotes" :key="showingFolder+thisCard.tag" outline>
+      <f7-card-header>
+        <small class="main-color">{{ cardTag(thisCard.tag) }}</small>
+        <small v-if="thisCard.tag === 'top'">
+          <i class="icofont-safety-pin"></i>
+        </small>
+      </f7-card-header>
+      <f7-card-content :padding="false">
+        <f7-list media-list>
+          <f7-list-item
+            no-chevron
+            link="#"
+            :title="noteTitle(thisNote)"
+            :subtitle="noteSubtitle(thisNote)"
+            v-for="thisNote in thisCard.notes"
+            :key="thisNote.id"
+          >
+            <small class="noteDateFooter">{{ noteDateFooter(thisNote.lastEditTime) }}</small>
+            &nbsp;
+            <i
+              class="icofont-sound-wave main-color"
+              v-if="noteTitle(thisNote) === audioNoteShowTitle"
+            ></i>
+          </f7-list-item>
+        </f7-list>
+      </f7-card-content>
+    </f7-card>
 
-    <f7-block-title class="searchbar-found">Components</f7-block-title>
-    <f7-list class="components-list searchbar-found">
-      <f7-list-item link="/accordion/" title="Accordion">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/action-sheet/" title="Action Sheet">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/appbar/" title="Appbar">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/autocomplete/" title="Autocomplete">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/badge/" title="Badge">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/buttons/" title="Buttons">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/calendar/" title="Calendar / Date Picker">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/cards/" title="Cards">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/cards-expandable/" title="Cards Expandable">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/checkbox/" title="Checkbox">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/chips/" title="Chips/Tags">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/color-picker/" title="Color Picker">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/contacts-list/" title="Contacts List">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/content-block/" title="Content Block">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/data-table/" title="Data Table">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/dialog/" title="Dialog">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/elevation/" title="Elevation">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/fab/" title="FAB">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/fab-morph/" title="FAB Morph">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/form-storage/" title="Form Storage">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/gauge/" title="Gauge">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/grid/" title="Grid / Layout Grid">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/icons/" title="Icons">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/infinite-scroll/" title="Infinite Scroll">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/inputs/" title="Inputs">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/lazy-load/" title="Lazy Load">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/list/" title="List View">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/list-index/" title="List Index">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/login-screen/" title="Login Screen">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/menu/" title="Menu">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/messages/" title="Messages">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/navbar/" title="Navbar">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/notifications/" title="Notifications">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/panel/" title="Panel / Side Panels">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/photo-browser/" title="Photo Browser">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/picker/" title="Picker">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/popover/" title="Popover">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/popup/" title="Popup">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/preloader/" title="Preloader">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/progressbar/" title="Progress Bar">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/pull-to-refresh/" title="Pull To Refresh">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/radio/" title="Radio">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/range/" title="Range Slider">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/searchbar/" title="Searchbar">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/searchbar-expandable/" title="Searchbar Expandable">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/sheet-modal/" title="Sheet Modal">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/skeleton/" title="Skeleton (Ghost) Elements">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/smart-select/" title="Smart Select">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/sortable/" title="Sortable List">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/statusbar/" title="Statusbar">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/stepper/" title="Stepper">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/subnavbar/" title="Subnavbar">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/swipeout/" title="Swipeout (Swipe To Delete)">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/swiper/" title="Swiper Slider">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/tabs/" title="Tabs">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/timeline/" title="Timeline">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/toast/" title="Toast">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/toggle/" title="Toggle">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/toolbar-tabbar/" title="Toolbar & Tabbar">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/tooltip/" title="Tooltip">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-      <f7-list-item link="/virtual-list/" title="Virtual List">
-        <f7-icon slot="media" icon="icon-f7"></f7-icon>
-      </f7-list-item>
-    </f7-list>
-    <f7-list class="searchbar-not-found">
-      <f7-list-item title="Nothing found"></f7-list-item>
-    </f7-list>
-    <f7-block-title class="searchbar-hide-on-search">Themes</f7-block-title>
-    <f7-list class="searchbar-hide-on-search">
-      <f7-list-item title="iOS Theme" external link="./index.html?theme=ios"></f7-list-item>
-      <f7-list-item title="Material (MD) Theme" external link="./index.html?theme=md"></f7-list-item>
-      <f7-list-item title="Aurora Desktop Theme" external link="./index.html?theme=aurora"></f7-list-item>
-      <f7-list-item title="Color Themes" link="/color-themes/"></f7-list-item>
-    </f7-list>
-
-    <f7-block-title class="searchbar-hide-on-search">Page Loaders & Router</f7-block-title>
-    <f7-list class="searchbar-hide-on-search">
-      <f7-list-item title="Routable Modals" link="/routable-modals/"></f7-list-item>
-      <f7-list-item title="Default Route (404)" link="/load-something-that-doesnt-exist/"></f7-list-item>
-      <f7-list-item title="Master-Detail (Split View)" link="/master-detail/"></f7-list-item>
-    </f7-list>
+    <f7-popover class="folder-menu" backdropEl=".folder-menu-backdrop">
+      <f7-list>
+        <f7-list-item
+          link="#"
+          popover-close
+          :title="folderShowingName(folder)"
+          :after="nums.toString()"
+          v-for="(nums, folder) in folderNums"
+          :key="folder"
+          @click="changeFolder(folder)"
+          :class="folderShowingStyle(folder)"
+        ></f7-list-item>
+      </f7-list>
+    </f7-popover>
+    <div class="popover-backdrop backdrop-in folder-menu-backdrop" v-if="backdropShow"></div>
+    <f7-popover class="more-menu" :backdrop="false">
+      <f7-list>
+        <f7-list-item link="#" popover-close title="设置" no-chevron></f7-list-item>
+        <f7-list-item link="#" popover-close title="九宫格" no-chevron></f7-list-item>
+      </f7-list>
+    </f7-popover>
   </f7-page>
 </template>
+
 <script>
-import { f7Page, f7Navbar, f7NavLeft, f7NavTitle, f7NavTitleLarge, f7NavRight, f7BlockTitle, f7List, f7ListItem, f7Link, f7Searchbar, f7Icon } from 'framework7-vue'
 
 export default {
-  components: {
-    f7Page,
-    f7Navbar,
-    f7NavLeft,
-    f7NavTitle,
-    f7NavTitleLarge,
-    f7NavRight,
-    f7BlockTitle,
-    f7List,
-    f7ListItem,
-    f7Link,
-    f7Searchbar,
-    f7Icon
+  data () {
+    return {
+      backdropShow: false,
+      folderNums: {}, // folder下便签数量
+      allCardTags: {}, // 所有card的tag
+      showingFolder: 'all', // 当前folder
+      thisYear: null, // 今年初
+      audioNoteShowTitle: '语音便签'
+    }
+  },
+  mounted () {
+    this.thisYear = this.$moment([this.$moment().year(), 0, 1, 0, 0, 0]).valueOf()
+    this.showBackdrop()
+    this.getAllNotesInfo()
+    // window.$f7.navbar.size('f7-navbar')
+  },
+  computed: {
+    title: function () {
+      const thisTitle = this.folderShowingName(this.showingFolder)
+      return thisTitle === '全部便签' ? '便签' : thisTitle
+    },
+    showingNotes: function () {
+      let topShowingNotes = []
+      let otherShowingNotes = []
+      for (let tag in this.allCardTags) {
+        let notes = this.allCardTags[tag].filter((note, index) => {
+          let result
+          switch (this.showingFolder) {
+            case 'all':
+              result = !note.deleteTime
+              break
+            case 'trash':
+              result = note.deleteTime
+              break
+            default:
+              result = !note.deleteTime && note.folder === this.showingFolder
+              break
+          }
+          return result
+        })
+        if (notes.length > 0) {
+          if (tag === 'top') {
+            topShowingNotes.push({
+              tag: tag,
+              notes: notes
+            })
+          } else {
+            otherShowingNotes.push({
+              tag: tag,
+              notes: notes
+            })
+          }
+        }
+      }
+      otherShowingNotes = this.sortingByDate(otherShowingNotes, 'tag')
+      return topShowingNotes.concat(otherShowingNotes)
+    }
+  },
+  methods: {
+    getAllNotes: function () {
+      return this.$store.state.notes
+    },
+    cardTag: function (tag) {
+      let showTag
+      switch (tag) {
+        case 'top':
+          showTag = '置顶'
+          break
+        case this.thisYear.toString():
+          showTag = this.$moment(parseInt(tag)).format('MMM')
+          break
+        default:
+          showTag = this.$moment(parseInt(tag)).format('YYYY年MM月')
+          break
+      }
+      return showTag
+    },
+    // get note title
+    noteTitle: function (thisNote) {
+      const audioNum = thisNote.content.split('note-audio').length / 2
+      console.log(thisNote.content, audioNum)
+      if (audioNum >= 1 && audioNum % 1 === 0.5) { // is audio
+        return this.audioNoteShowTitle
+      } else {
+        const expectLen = 15
+        const firstP = thisNote.content.split('<br')[0]
+        return firstP.length >= expectLen ? thisNote.content.slice(0, expectLen) : firstP
+      }
+    },
+    noteSubtitle: function (thisNote) {
+      return thisNote.content.slice(0, 10)
+    },
+    noteDateFooter: function (value) {
+      return this.$moment(value).calendar()
+    },
+    changeFolder: function (folder) {
+      // change title
+      this.showingFolder = folder
+    },
+    getAllNotesInfo: function () {
+      // init
+      let trash = 0
+      this.folderNums = {
+        'all': 0
+      }
+      this.allCardTags = {
+        'top': []
+      }
+      this.getAllNotes().forEach((note, index) => {
+        // get all folders name, including 'all', 'trash'
+        // all nums
+        this.folderNums.all += 1
+        // trash nums
+        if (note.deleteTime) {
+          trash += 1
+        } else { // no delete then fold
+          // folder nums
+          const theFolder = note.folder
+          if (!this.folderNums[theFolder]) {
+            this.folderNums[theFolder] = 0
+          }
+          this.folderNums[theFolder] += 1
+        }
+
+        // allCardTags
+        let cardTag
+        if (note.top) {
+          cardTag = 'top'
+        } else { // no top then has date tag
+          if (note.lastEditTime >= this.thisYear) { // thisYear
+            cardTag = this.thisYear
+          } else {
+            const thisDate = this.$moment(note.lastEditTime)
+            cardTag = this.$moment([thisDate.year(), thisDate.month(), 1, 0, 0, 0]).valueOf()
+          }
+        }
+        if (!this.allCardTags[cardTag]) {
+          this.allCardTags[cardTag] = []
+        }
+        this.allCardTags[cardTag].push(note)
+      })
+      // sorting
+      for (let tag in this.allCardTags) {
+        this.allCardTags[tag] = this.sortingByDate(this.allCardTags[tag], 'lastEditTime')
+      }
+
+      this.folderNums['trash'] = trash
+    },
+    folderShowingName: function (folder) {
+      let showName = folder
+      switch (folder) {
+        case 'all':
+          showName = '全部便签'
+          break
+        case 'Unclassified':
+          showName = '未分类'
+          break
+        case 'trash':
+          showName = '废纸篓'
+          break
+        default:
+          break
+      }
+      return showName
+    },
+    folderShowingStyle: function (folder) {
+      return this.showingFolder === folder ? 'main-color' : ''
+    },
+    sortingByDate: function (arr, attr) {
+      return arr.sort((a, b) => {
+        return b[attr] - b[attr]
+      })
+    },
+    // popover backdrop
+    showBackdrop: function () {
+      document.addEventListener('popover:open', (e) => {
+        if (e.target.className.includes('folder-menu')) {
+          // add non-transparent backdrop
+          this.backdropShow = true
+          // disable content scroll
+          document.querySelector('.page-content').setAttribute('style', 'overflow: hidden')
+        }
+      })
+      document.addEventListener('popover:close', (e) => {
+        if (e.target.className.includes('folder-menu')) {
+          this.backdropShow = false
+          document.querySelector('.page-content').setAttribute('style', 'overflow: auto')
+        }
+      })
+    }
+
   }
 }
 </script>
+
+<style lang="less" scoped>
+a {
+  color: black !important;
+}
+
+.folder-menu-backdrop {
+  top: var(--f7-navbar-height);
+}
+
+.folder-menu {
+  left: 0 !important;
+  width: 100%;
+  border-radius: 0;
+  box-shadow: 0 0 0;
+}
+
+.noteDateFooter {
+  opacity: 0.6;
+}
+
+.trashInfo {
+  text-align: center;
+  background-color: antiquewhite;
+  padding: 0.3125rem 0;
+}
+</style>

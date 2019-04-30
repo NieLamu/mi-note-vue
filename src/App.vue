@@ -40,19 +40,37 @@ export default {
     }
   },
   mounted () {
+    const mainBgColor = 'dfecd5'
     this.$f7ready(f7 => {
       console.log('f7', f7)
       window.$f7 = f7
       if (!!window.cordova && !!window.StatusBar && window.cordova.platformId === 'android') {
         // window.StatusBar.overlaysWebView(true)
-        window.StatusBar.backgroundColorByHexString('#ff00bcd4')
+        window.StatusBar.backgroundColorByHexString(`#ff${mainBgColor}`)
+        // document.querySelector('.md')
+        // document.querySelector('.ios').style.setProperty('--f7-page-bg-color', `#${mainBgColor} !important`)
       }
       f7.dialog.alert('Component mounted')
+      const platform = document.querySelector('.md') || document.querySelector('.ios')
+      platform.setAttribute('style', `--f7-page-bg-color: #${mainBgColor} !important`)
+      document.querySelector("meta[name='theme-color']").setAttribute('content', `#${mainBgColor}`)
     })
   }
 }
 </script>
 
 <style>
+/* framework7 css */
 @import "./assets/css/app.css";
+/* icofont */
+@import "./assets/css/icofont.min.css";
+
+:root {
+  --main-color: #f0c023;
+  --f7-card-border-radius: 0.625rem !important;
+}
+
+.main-color {
+  color: var(--main-color);
+}
 </style>
