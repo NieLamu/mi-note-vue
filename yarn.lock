@@ -4934,6 +4934,11 @@ invert-kv@^2.0.0:
   resolved "https://registry.npm.taobao.org/invert-kv/download/invert-kv-2.0.0.tgz#7393f5afa59ec9ff5f67a27620d11c226e3eec02"
   integrity sha1-c5P1r6Weyf9fZ6J2INEcIm4+7AI=
 
+ionicons@^4.5.6:
+  version "4.5.6"
+  resolved "https://registry.npm.taobao.org/ionicons/download/ionicons-4.5.6.tgz#f3b5d2446e7e1b30e67ddcd1fc563271acc60f3c"
+  integrity sha1-87XSRG5+GzDmfdzR/FYycazGDzw=
+
 ios-sim@^8.0.1:
   version "8.0.1"
   resolved "https://registry.npm.taobao.org/ios-sim/download/ios-sim-8.0.1.tgz#b74fbc46601a9773fee90417d753964c08e0e99d"
