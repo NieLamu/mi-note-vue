@@ -47,7 +47,7 @@ export default {
   },
   methods: {},
   mounted () {
-    const mainBgColor = '#f0c02333'// '#00bcd4'
+    const mainBgColor = '#f0c023'// '#00bcd4'
     const mainColor = '#f0c023'
     const statusBarOpacity = 'ff'
     this.$f7ready(f7 => {
@@ -81,6 +81,7 @@ export default {
   --f7-card-border-radius: 0.625rem !important;
   --f7-searchbar-in-page-content-input-border-radius: 0.625rem !important;
   --f7-searchbar-input-border-radius: 0.625rem !important;
+  --f7-theme-color: black !important;
 }
 
 .md {
@@ -97,9 +98,17 @@ export default {
   .navbar:before {
     height: 0;
   }
+  .list .item-media {
+    min-width: 0px !important;
+  }
 }
 .ios {
   --f7-fab-box-shadow: 0 0 0 !important;
+  .navbar {
+    &:after {
+      height: 0;
+    }
+  }
 }
 
 .main-color {
@@ -108,6 +117,13 @@ export default {
 
 .navbar {
   background-color: var(--main-bg-color) !important;
+  a {
+    color: black !important;
+  }
+}
+
+.popover {
+  width: auto !important;
 }
 
 // hide navbar

@@ -2,13 +2,13 @@
   <f7-page>
     <f7-navbar>
       <f7-nav-title>
-        <f7-link raised popover-open=".folder-menu">
+        <f7-link raised popover-open=".home-folder-menu">
           {{ navBarTitle }}&nbsp;
           <f7-icon ios="ion:ios-arrow-dropdown" md="ion:md-arrow-dropdown"></f7-icon>
         </f7-link>
       </f7-nav-title>
       <f7-nav-right>
-        <f7-link raised popover-open=".more-menu">
+        <f7-link raised popover-open=".home-more-menu">
           <f7-icon ios="ion:ios-more" md="ion:md-more"></f7-icon>
         </f7-link>
       </f7-nav-right>
@@ -49,7 +49,7 @@
                 :subtitle="noteSubtitle(thisNote)"
                 v-for="thisNote in thisCard.notes"
                 :key="thisNote.id"
-                @click="goToNote(thisNote.id)"
+                @click="$f7router.navigate(`/note/${thisNote.id}/`)"
               >
                 <small class="note-date-footer">{{ noteDateFooter(thisNote.lastEditTime) }}</small>
                 &nbsp;
@@ -84,7 +84,7 @@
       <f7-icon ios="ion:ios-mic" md="ion:md-mic"></f7-icon>
     </f7-fab>
 
-    <f7-popover class="folder-menu" backdropEl=".folder-menu-backdrop">
+    <f7-popover class="home-folder-menu" backdropEl=".home-folder-menu-backdrop">
       <f7-list>
         <f7-list-item
           link="#"
@@ -98,8 +98,8 @@
         ></f7-list-item>
       </f7-list>
     </f7-popover>
-    <div class="popover-backdrop folder-menu-backdrop"></div>
-    <f7-popover class="more-menu" :backdrop="true">
+    <div class="popover-backdrop home-folder-menu-backdrop"></div>
+    <f7-popover class="home-more-menu" :backdrop="false">
       <f7-list>
         <f7-list-item link="#" popover-close title="设置" no-chevron></f7-list-item>
         <f7-list-item
@@ -129,7 +129,6 @@ export default {
   },
   mounted () {
     console.log('—————— mounted')
-
     this.thisYear = this.$moment([this.$moment().year(), 0, 1, 0, 0, 0]).valueOf()
     this.listenFolderMenu()
     this.listenSearchBar()
@@ -282,9 +281,6 @@ export default {
       // change title
       this.currentFolder = folder
     },
-    goToNote: function (id) {
-      console.log('—————— goToNote', id)
-    },
     folderNameShow: function (folder) {
       console.log('—————— folderNameShow')
       let showName = folder
@@ -310,7 +306,7 @@ export default {
     // is show backdrop
     listenFolderMenu: function () {
       document.addEventListener('popover:open', (e) => {
-        if (e.target.className.includes('folder-menu')) {
+        if (e.target.className.includes('home-folder-menu')) {
           // add non-transparent backdrop
           this.backdropShowing = true
           // disable content scroll
@@ -318,7 +314,7 @@ export default {
         }
       })
       document.addEventListener('popover:close', (e) => {
-        if (e.target.className.includes('folder-menu')) {
+        if (e.target.className.includes('home-folder-menu')) {
           this.backdropShowing = false
           this.enableContentScroll()
         }
@@ -365,15 +361,11 @@ export default {
 </script>
 
 <style lang="less" scoped>
-a {
-  color: black !important;
-}
-
-.folder-menu-backdrop {
+.home-folder-menu-backdrop {
   top: var(--f7-navbar-height);
 }
 
-.folder-menu {
+.home-folder-menu {
   left: 0 !important;
   width: 100%;
   border-radius: 0;

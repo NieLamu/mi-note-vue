@@ -5,6 +5,8 @@ import './registerServiceWorker'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import moment from 'moment'
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
 // Framework7 Library CSS Bundle
 import 'framework7/css/framework7.bundle.min.css'
@@ -19,6 +21,8 @@ Framework7.use(Framework7Vue)
 
 Vue.config.productionTip = true
 Vue.use(VueAxios, axios)
+Vue.use(mavonEditor)
+
 Vue.prototype.$moment = moment
 moment.locale('zh-cn', {
   monthsShort: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split(

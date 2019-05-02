@@ -81,7 +81,7 @@ export default new Vuex.Store({
         reminderTime: false, // 提醒时间
         deleteTime: false, // 是否删除及删除时间
         content:
-          '已置顶未删除未分类未私密<br />的便签哈哈哈哈哈哈计划的手机号回到办公室<img src="https://wow.techbrood.com/uploads/fiddles/35583/%E6%97%A0%E6%A0%87%E9%A2%98.png">' // 内容
+          '已置顶未删除未分类未私密这句很长哦哈哈哈哈哈哈计划的手机号回到办公室\n<img src="https://wow.techbrood.com/uploads/fiddles/35583/%E6%97%A0%E6%A0%87%E9%A2%98.png">\n图片肯定是占一行的还有audio\n<node-audio :src="xxx.mp3">60</node-audio>\n这句比较短\n这句还行\n' // 内容
       },
       '11100': {
         id: 11100,
@@ -155,7 +155,7 @@ export default new Vuex.Store({
         reminderTime: false, // 提醒时间
         deleteTime: 1556357648000, // 是否删除及删除时间
         content:
-          '未置顶已删除已分类未私密<br />的便签 <note-audio :src="xxx.mp3" :duration="60"><note-audio>' // 内容
+          '未置顶已删除已分类未私密的便签来瞧一瞧看一看了这是一个超过一行的文本这是个短文本<audio :src="xxx.mp3" :duration="60"><audio>' // 内容
       },
       '10101': {
         id: 10101,
