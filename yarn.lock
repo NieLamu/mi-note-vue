@@ -5788,6 +5788,11 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+marked@^0.3.6:
+  version "0.3.19"
+  resolved "https://registry.npm.taobao.org/marked/download/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
+  integrity sha1-XUf3CcTJ/Dwha21GEnKA9As515A=
+
 mavon-editor@^2.7.4:
   version "2.7.4"
   resolved "https://registry.npm.taobao.org/mavon-editor/download/mavon-editor-2.7.4.tgz#f5877fa93e73cea22472e2b130b88ed39a828c52"
@@ -8894,6 +8899,11 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.npm.taobao.org/tweetnacl/download/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
+twemoji@^2.4.1:
+  version "2.5.1"
+  resolved "https://registry.npm.taobao.org/twemoji/download/twemoji-2.5.1.tgz#296647c6163c7f047458871c2aebe25ea8ffe834"
+  integrity sha1-KWZHxhY8fwR0WIccKuviXqj/6DQ=
+
 type-check@~0.3.2:
   version "0.3.2"
   resolved "https://registry.npm.taobao.org/type-check/download/type-check-0.3.2.tgz#5884cab512cf1d355e3fb784f30804b2b520db72"
@@ -9218,12 +9228,22 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@^2.6.10:
+vue@>=2.0.5, vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.10.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fvue%2Fdownload%2Fvue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha1-pysaQqTYKnIepDjRtr9V5mGVxjc=
 
-vuex@^3.1.0:
+vueditor@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.npm.taobao.org/vueditor/download/vueditor-0.3.1.tgz#e07b4a9b57884bc05fe17a58dc1b9304ddb70388"
+  integrity sha1-4HtKm1eIS8Bf4XpY3BuTBN23A4g=
+  dependencies:
+    marked "^0.3.6"
+    twemoji "^2.4.1"
+    vue ">=2.0.5"
+    vuex ">=2.0.0"
+
+vuex@>=2.0.0, vuex@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/vuex/download/vuex-3.1.0.tgz#634b81515cf0cfe976bd1ffe9601755e51f843b9"
   integrity sha1-Y0uBUVzwz+l2vR/+lgF1XlH4Q7k=
