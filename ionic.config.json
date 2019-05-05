@@ -1,0 +1,7 @@
+{
+  "name": "mi-note-vue",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "custom"
+}
