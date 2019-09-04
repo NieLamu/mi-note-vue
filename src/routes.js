@@ -1,5 +1,5 @@
-import Home from './pages/home.vue'
-import Note from './pages/note.vue'
+import Home from './pages/Home.vue'
+import Note from './pages/Note.vue'
 
 import NotFound from './pages/404.vue'
 
@@ -12,7 +12,7 @@ export default [
   },
   // edit page
   {
-    path: '/note/:noteId',
+    path: '/note/:noteId/:type',
     component: Note
   },
   // Default route (404 page). MUST BE THE LAST

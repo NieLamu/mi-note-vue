@@ -20,7 +20,73 @@ export default new Vuex.Store({
         lastEditTime: 1556367627000, // 编辑时间
         reminderTime: false, // 提醒时间
         deleteTime: false, // 是否删除及删除时间
-        content: '未置顶未删除未分类未私密<br />的便签' // 内容
+        content: `<p>
+      <strong>
+        <em>
+          <s>
+            <u>this is a very 中文</u>
+          </s>
+        </em>
+        <code>
+          <em>
+            <s>
+              <u>basic example</u>
+            </s>
+          </em>
+        </code>
+        <em>
+          <s>
+            <u>of tiptap.</u>
+          </s>
+        </em>
+      </strong>
+    </p>
+    <h1>heading1</h1>
+    <h2>heading2</h2>
+    <h3>heading3</h3>
+    <ul>
+      <li>
+        <p>unordered</p>
+      </li>
+      <li>
+        <p>list</p>
+      </li>
+    </ul>
+    <ol>
+      <li>
+        <p>ordered</p>
+      </li>
+      <li>
+        <p>list</p>
+      </li>
+    </ol>
+    <blockquote>
+      <p>
+        Block quote 👏
+        <br>– mom
+      </p>
+    </blockquote>
+    <pre>
+        <code>
+          .toolbar-bottom .toolbar-inner {
+            font-size: 30px;
+            padding: 0 0 0 16px;
+          }
+        </code>
+      </pre>
+    <p>
+      <br>
+    </p>
+    <p>There is always something to do.中文好的 Thankfully, there are checklists for that. Don't forget to call mom.</p>
+    <ul data-type="todo_list">
+      <li
+        data-type="todo_item"
+        data-done="true"
+      >Buy beer 和很是公司的概念就是大概第三个第四个三大关键的时刻饿很多费劲啊覅基本上记号记号记号记号</li>
+      <li data-type="todo_item" data-done="true">Buy meat</li>
+      <li data-type="todo_item" data-done="true">Buy milk</li>
+      <li data-type="todo_item" data-done="false">Call mom</li>
+    </ul>` // 内容
       },
       '10001': {
         id: 10001,
@@ -309,6 +375,28 @@ export default new Vuex.Store({
     },
     toggleNavbarViewHeight (state) {
       state.hideNavbar['view-height'] = !state.hideNavbar['view-height']
+    },
+    setAllNotes (state, notes) {
+      state.notes = notes
+    },
+    newNote (state, payload) {
+      const timestamp = parseInt(payload.timestamp)
+      const note = {
+        id: payload.id,
+        top: false, // 置顶  可以有多个置顶的
+        folder: 'Unclassified', // 文件夹 唯一
+        private: false, // 私密
+        skin: false, // 皮肤
+        createTime: timestamp, // 创建时间
+        lastEditTime: timestamp, // 编辑时间
+        reminderTime: false, // 提醒时间
+        deleteTime: false, // 是否删除及删除时间
+        content: '' // 内容
+      }
+      state.notes[payload.id] = note
+    },
+    updateNote (state, note) {
+      state.notes[note.id] = note
     }
   },
   actions: {

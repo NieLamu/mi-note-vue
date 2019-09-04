@@ -2,14 +2,14 @@
   <f7-page>
     <f7-navbar>
       <f7-nav-title>
-        <f7-link raised popover-open=".home-folder-menu">
+        <f7-link popover-open=".home-folder-menu">
           {{ navBarTitle }}&nbsp;
-          <f7-icon ios="ion:ios-arrow-dropdown" md="ion:md-arrow-dropdown"></f7-icon>
+          <f7-icon ion="android-arrow-dropdown"></f7-icon>
         </f7-link>
       </f7-nav-title>
       <f7-nav-right>
-        <f7-link raised popover-open=".home-more-menu">
-          <f7-icon ios="ion:ios-more" md="ion:md-more"></f7-icon>
+        <f7-link popover-open=".home-more-menu">
+          <f7-icon ios="ion:ios-more" md="ion:android-more-vertical"></f7-icon>
         </f7-link>
       </f7-nav-right>
     </f7-navbar>
@@ -37,7 +37,7 @@
           <f7-card-header>
             <small class="main-color">{{ cardTag(thisCard.tag) }}</small>
             <f7-link v-if="thisCard.tag === 'top'">
-              <f7-icon ios="ion:ios-attach" md="ion:md-attach" class="main-color"></f7-icon>
+              <f7-icon ion="pin" class="main-color"></f7-icon>
             </f7-link>
           </f7-card-header>
           <f7-card-content :padding="false">
@@ -49,14 +49,13 @@
                 :subtitle="noteSubtitle(thisNote)"
                 v-for="thisNote in thisCard.notes"
                 :key="thisNote.id"
-                @click="$f7router.navigate(`/note/${thisNote.id}/`)"
+                @click="$f7router.navigate(`/note/${thisNote.id}/edit/`)"
               >
                 <small class="note-date-footer">{{ noteDateFooter(thisNote.lastEditTime) }}</small>
                 &nbsp;
                 <!--  -->
                 <f7-icon
-                  ios="ion:ios-mic"
-                  md="ion:md-mic"
+                  ion="ios-mic-outline"
                   class="main-color"
                   v-if="noteTitle(thisNote) === audioNoteTitle"
                 ></f7-icon>
@@ -71,17 +70,16 @@
       </div>
     </div>
 
-    <f7-fab position="right-bottom" slot="fixed" v-show="!searchBarActive">
-      <i class="icon ion-ios-add if-not-md"></i>
-      <i class="icon ion-md-add md-only"></i>
-    </f7-fab>
     <f7-fab
       position="right-bottom"
       slot="fixed"
       v-show="!searchBarActive"
       class="main-fab-rgt-btm-btn2"
     >
-      <f7-icon ios="ion:ios-mic" md="ion:md-mic"></f7-icon>
+      <f7-icon ion="ios-mic-outline"></f7-icon>
+    </f7-fab>
+    <f7-fab position="right-bottom" slot="fixed" v-show="!searchBarActive" @click="newNote">
+      <f7-icon ion="ios-plus-empty"></f7-icon>
     </f7-fab>
 
     <f7-popover class="home-folder-menu" backdropEl=".home-folder-menu-backdrop">
@@ -96,10 +94,13 @@
           @click="changeFolder(folder)"
           :class="folderStyleShow(folder)"
         ></f7-list-item>
+        <f7-list-item no-chevron class="add-new-folder">
+          <f7-icon ion="android-add" class="main-color"></f7-icon>&nbsp;新建文件夹
+        </f7-list-item>
       </f7-list>
     </f7-popover>
     <div class="popover-backdrop home-folder-menu-backdrop"></div>
-    <f7-popover class="home-more-menu" :backdrop="false">
+    <f7-popover class="home-more-menu" :backdrop="true">
       <f7-list>
         <f7-list-item link="#" popover-close title="设置" no-chevron></f7-list-item>
         <f7-list-item
@@ -355,6 +356,10 @@ export default {
       return arr.sort((a, b) => {
         return b[attr] - b[attr]
       })
+    },
+    newNote: function () {
+      const id = this.$moment().valueOf()
+      this.$f7router.navigate(`/note/${id}/text/`)
     }
   }
 }
@@ -365,10 +370,18 @@ export default {
   top: var(--f7-navbar-height);
 }
 
+.popover {
+  width: auto;
+}
+
 .home-folder-menu {
   left: 0 !important;
-  width: 100%;
-  border-radius: 0;
+  width: 100% !important;
+}
+
+.new-folder {
+  display: block !important;
+  text-align: center !important;
 }
 
 .note-date-footer {
@@ -378,9 +391,7 @@ export default {
 // trash info
 .trash-info {
   text-align: center;
-  background-color: var(--main-bg-color);
   padding: 0.3125rem 0;
-  color: var(--main-color);
 }
 
 // search not found
@@ -393,8 +404,10 @@ export default {
 // fab button
 .fab {
   --f7-fab-bg-color: var(--main-color);
-  i {
-    font-size: 2rem;
+  a {
+    i {
+      font-size: 2rem;
+    }
   }
 }
 // second fab button

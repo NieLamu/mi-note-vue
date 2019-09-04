@@ -5,8 +5,8 @@ import './registerServiceWorker'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import moment from 'moment'
-import mavonEditor from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
+
+import './assets/css/vue.css'
 
 // Framework7 Library CSS Bundle
 import 'framework7/css/framework7.bundle.min.css'
@@ -19,11 +19,8 @@ import Framework7Vue from 'framework7-vue/framework7-vue.esm.bundle'
 // Init plugin and register all components
 Framework7.use(Framework7Vue)
 
-Vue.config.productionTip = true
 Vue.use(VueAxios, axios)
-Vue.use(mavonEditor)
 
-Vue.prototype.$moment = moment
 moment.locale('zh-cn', {
   monthsShort: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split(
     '_'
@@ -42,9 +39,29 @@ moment.locale('zh-cn', {
     sameElse: 'lll'
   }
 })
+Vue.prototype.$moment = moment
 
-// Init Vue App
-new Vue({
-  store,
-  render: h => h(App)
-}).$mount('#app')
+// add cordova.js only if serving the app through file://
+if (window.location.protocol === 'file:') {
+  console.log('cordovaScript', window.cordova)
+  var cordovaScript = document.createElement('script')
+  cordovaScript.setAttribute('type', 'text/javascript')
+  cordovaScript.setAttribute('src', 'cordova.js')
+  document.body.appendChild(cordovaScript)
+  console.log('after cordovaScript', window.cordova)
+
+  document.addEventListener('deviceready', onDeviceReady, false)
+} else {
+  onDeviceReady()
+}
+
+Vue.config.productionTip = true
+
+// device APIs are available
+function onDeviceReady () {
+  // Init Vue App
+  new Vue({
+    store,
+    render: h => h(App)
+  }).$mount('#app')
+}
