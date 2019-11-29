@@ -1,9 +1,8 @@
 import Vue from 'vue'
-import App from './App.vue'
+import App from './App'
 import store from './store'
 import './registerServiceWorker'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
 import moment from 'moment'
 
 import './assets/css/vue.css'
@@ -19,7 +18,7 @@ import Framework7Vue from 'framework7-vue/framework7-vue.esm.bundle'
 // Init plugin and register all components
 Framework7.use(Framework7Vue)
 
-Vue.use(VueAxios, axios)
+Vue.prototype.$axios = axios
 
 moment.locale('zh-cn', {
   monthsShort: '一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月'.split(
@@ -43,7 +42,7 @@ Vue.prototype.$moment = moment
 
 // add cordova.js only if serving the app through file://
 if (window.location.protocol === 'file:') {
-  console.log('cordovaScript', window.cordova)
+  console.log('before cordovaScript', window.cordova)
   var cordovaScript = document.createElement('script')
   cordovaScript.setAttribute('type', 'text/javascript')
   cordovaScript.setAttribute('src', 'cordova.js')
