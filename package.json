@@ -31,7 +31,7 @@
     "framework7": "^4.5.0",
     "framework7-icons": "^2.3.1",
     "framework7-vue": "^4.5.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "register-service-worker": "^1.6.2",
     "tiptap": "^1.25.0",
     "tiptap-extensions": "^1.27.0",
